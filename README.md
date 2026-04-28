@@ -81,9 +81,8 @@ Curated summaries and analyses on current HR trends — covering topics like HR 
 - **Google Project Management Certificate** *(Coursera)* — Useful for HR project management
 - **People Analytics** — Wharton Online / Coursera
 - **Organizational Behavior** — IIMA / IIMB Online Courses
-- **HRCI Human Resource Associate - Coursera
-- **Generative AI for HR - IBM
-- 
+- **HRCI Human Resource Associate- Coursera**
+- **Generative AI for HR - IBM**
 ---
 
 ## 🤝 Let's Connect
@@ -91,7 +90,6 @@ Curated summaries and analyses on current HR trends — covering topics like HR 
 I'm always open to conversations around HR, people management, career advice, and collaboration on HR-related projects.
 
 - 💼 **LinkedIn:** www.linkedin.com/in/jeevan-sai-jagadish-65661125a
-
 - 📧 **Email:** jagadish11121@gmail.com
 - 🌐 **Portfolio:** *https://github.com/Jagadish11121*
 
