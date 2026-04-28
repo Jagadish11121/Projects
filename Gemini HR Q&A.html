@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Interview Prep | The Hot Seat</title>
+    <style>
+        :root {
+            --primary: #2563eb; /* Corporate Blue */
+            --secondary: #1e293b; /* Dark Slate */
+            --accent: #f59e0b; /* Alert Orange */
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--secondary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 { margin: 0; font-size: 2rem; }
+        header p { margin: 10px 0 0; opacity: 0.9; }
+
+        .topic-section {
+            margin-bottom: 30px;
+        }
+
+        .topic-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-reveal {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-reveal:hover {
+            background-color: var(--primary);
+        }
+
+        .answer-box {
+            display: none; /* Hidden by default */
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            margin-top: 10px;
+        }
+
+        .answer-box.visible {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .pro-tip {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Badge for Difficult Questions */
+        .badge {
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            vertical-align: middle;
+            margin-left: 10px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>HR Interview Prep: The Hot Seat</h1>
+        <p>Interactive Interview Practice for MBA Students</p>
+    </header>
+
+    <div class="topic-section">
+        <div class="topic-title">1. Talent Acquisition</div>
+        
+        <div class="card">
+            <div class="question">
+                <span>"Since you were a Career Counsellor, how is 'selling a course' similar to 'selling a job'?"</span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "They are both about <em>fit</em> and <em>listening</em>. In counseling, I listened to a student's aspirations to find the right course. In recruitment, I listen to a candidate's career goals to see if they align with the company's vision. If the fit isn't there, 'selling' it will only lead to attrition later."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question">
+                <span>"What are the key metrics you would track as a recruiter?"</span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "I would track <strong>Time to Fill</strong> (speed), <strong>Cost per Hire</strong> (budget), and most importantly, <strong>Quality of Hire</strong> (retention rates after 6 months)."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <div class="topic-title">2. Learning & Development</div>
+        <div class="card">
+            <div class="question">
+                <span>"How do you justify the budget for a training program?" <span class="badge">Hard</span></span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "I would use the <strong>Kirkpatrick Model</strong>. I wouldn't just measure if people 'liked' the training (Level 1). I would measure if their behavior changed (Level 3) and if it impacted business results (Level 4), like increased sales or reduced errors."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <div class="topic-title">3. Compensation & Benefits</div>
+        <div class="card">
+            <div class="question">
+                <span>"Explain the difference between CTC and Gross Salary." <span class="badge">Must Know</span></span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "<strong>CTC (Cost to Company)</strong> is the total amount the company spends on an employee, including PF contributions, insurance, and gratuity. <strong>Gross Salary</strong> is the amount payable before tax deductions. <strong>Net Salary</strong> (In-hand) is what lands in the bank account after taxes and PF deductions."</p>
+                <p class="pro-tip">Tip: Always mention that CTC is an 'Expense' concept for the company, while Gross is an 'Income' concept for the employee.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <div class="topic-title">4. Employee Relations & Law</div>
+        <div class="card">
+            <div class="question">
+                <span>"What is the POSH Act?"</span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "It stands for the <strong>Prevention of Sexual Harassment</strong> of Women at Workplace Act (2013). It mandates that any organization with 10+ employees must have an Internal Complaints Committee (ICC) to address grievances."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <div class="topic-title">5. Generative AI in HR</div>
+        <div class="card">
+            <div class="question">
+                <span>"How can AI assist in Recruitment, and what is the risk?"</span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "AI helps by automating screening, drafting JDs, and scheduling interviews. However, the major risk is <strong>Algorithmic Bias</strong>—if the AI is trained on historical data that favored one demographic, it might unfairly reject diverse candidates."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <div class="topic-title">6. Teams & Change Management</div>
+        <div class="card">
+            <div class="question">
+                <span>"Employees hate the new software we installed. How do you fix this?"</span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "I would apply the <strong>ADKAR Model</strong>. Specifically, I’d focus on 'Awareness' (why we need the change) and 'Ability' (do they actually know how to use it?). Usually, resistance comes from fear of the unknown or lack of training."</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="topic-section">
+        <div class="topic-title">7. Downsizing & Politics</div>
+        <div class="card">
+            <div class="question">
+                <span>"How do you lay off an employee with dignity?" <span class="badge">Critical</span></span>
+                <button class="btn-reveal" onclick="toggleAnswer(this)">Reveal Answer</button>
+            </div>
+            <div class="answer-box">
+                <p><strong>The Winning Answer:</strong> "The conversation must be direct but empathetic. I would ensure they understand the decision is final (to avoid false hope), explain the severance package clearly, and if possible, offer <strong>Outplacement Services</strong> (help finding a new job) to show we still care about their future."</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created for your Fresh Start - March 2026</p>
+    </footer>
+</div>
+
+<script>
+    function toggleAnswer(button) {
+        // Find the answer box associated with this button (it's the next sibling in the DOM structure)
+        var answerBox = button.parentElement.nextElementSibling;
+        
+        if (answerBox.classList.contains('visible')) {
+            answerBox.classList.remove('visible');
+            button.textContent = "Reveal Answer";
+            button.style.backgroundColor = "#1e293b"; // Reset to dark
+        } else {
+            answerBox.classList.add('visible');
+            button.textContent = "Hide Answer";
+            button.style.backgroundColor = "#2563eb"; // Change to blue
+        }
+    }
+</script>
+
+</body>
+</html>

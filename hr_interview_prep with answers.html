@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Interview Prep - MBA Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .topic-selector {
+            margin-bottom: 30px;
+        }
+        
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .topic-btn {
+            padding: 15px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95em;
+            text-align: left;
+        }
+        
+        .topic-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .topic-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .question-number {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .difficulty {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .difficulty.easy { background: #d4edda; color: #155724; }
+        .difficulty.medium { background: #fff3cd; color: #856404; }
+        .difficulty.hard { background: #f8d7da; color: #721c24; }
+        
+        .question-text {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .tips {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .tips-header {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tips-content {
+            color: #6c757d;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .tips-content ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        
+        .tips-content li {
+            margin-bottom: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .mode-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .toggle-btns {
+            display: inline-flex;
+            background: #e9ecef;
+            border-radius: 25px;
+            padding: 5px;
+        }
+        
+        .toggle-btn {
+            padding: 10px 25px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .toggle-btn.active {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+        
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        @media (max-width: 768px) {
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 HR Interview Prep</h1>
+            <p>MBA HR Specialization Practice Questions</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalQuestions">0</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="currentTopic">-</div>
+                <div class="stat-label">Current Topic</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="questionsViewed">0</div>
+                <div class="stat-label">Viewed</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="mode-toggle">
+                <div class="toggle-btns">
+                    <button class="toggle-btn active" onclick="setMode('browse')">Browse by Topic</button>
+                    <button class="toggle-btn" onclick="setMode('random')">Random Practice</button>
+                </div>
+            </div>
+            
+            <div id="browseMode">
+                <div class="topic-selector">
+                    <h2 style="margin-bottom: 15px; color: #2c3e50;">Select a Topic:</h2>
+                    <div class="topic-grid" id="topicGrid"></div>
+                </div>
+                
+                <div id="questionArea"></div>
+            </div>
+            
+            <div id="randomMode" class="hidden">
+                <div id="randomQuestionArea"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = {
+            "Talent Acquisition": [
+                {
+                    q: "Walk me through how you would design a campus recruitment strategy for a tech startup looking to hire 50 software engineers in the next 6 months.",
+                    difficulty: "hard",
+                    tips: "Focus on: employer branding for startups, channel selection (campus events, hackathons, partnerships), timeline planning, budget allocation, and metrics to track success. Mention challenges like competing with big tech companies."
+                },
+                {
+                    q: "How would you reduce time-to-hire without compromising on candidate quality?",
+                    difficulty: "medium",
+                    tips: "Discuss process optimization, technology (ATS, AI screening), pipeline building, interview panel training, and pre-assessment tools. Use specific metrics like current vs. target time-to-hire."
+                },
+                {
+                    q: "A hiring manager complains that HR is sending 'irrelevant' candidates. How do you handle this situation?",
+                    difficulty: "medium",
+                    tips: "Show collaboration skills: intake meeting to clarify requirements, understanding must-haves vs. nice-to-haves, setting realistic expectations, improving job descriptions, and creating a feedback loop."
+                },
+                {
+                    q: "What metrics would you track to measure the effectiveness of your talent acquisition function?",
+                    difficulty: "easy",
+                    tips: "Cover quality of hire, time-to-fill, cost-per-hire, offer acceptance rate, source effectiveness, candidate experience scores, and hiring manager satisfaction. Explain why each matters."
+                },
+                {
+                    q: "How would you build a strong employer brand in a competitive market where you're not the highest payer?",
+                    difficulty: "hard",
+                    tips: "Discuss employee value proposition beyond compensation: culture, growth opportunities, work-life balance, social media strategy, employee testimonials, awards/certifications, and authentic storytelling."
+                }
+            ],
+            "Learning & Development": [
+                {
+                    q: "How would you assess the training needs of an organization that's undergoing digital transformation?",
+                    difficulty: "medium",
+                    tips: "Mention TNA methods: skills gap analysis, stakeholder interviews, competency frameworks, performance data review, and future skills mapping. Link to business strategy and digital maturity models."
+                },
+                {
+                    q: "Design a leadership development program for high-potential employees identified for succession planning.",
+                    difficulty: "hard",
+                    tips: "Include 70-20-10 model, stretch assignments, mentoring/coaching, executive education, cross-functional exposure, assessment centers, and measurement of development progress. Discuss retention strategies."
+                },
+                {
+                    q: "What's your approach to measuring ROI of learning and development initiatives?",
+                    difficulty: "hard",
+                    tips: "Reference Kirkpatrick's model (reaction, learning, behavior, results), Phillips ROI methodology, business impact metrics, and challenges in L&D measurement. Use examples."
+                },
+                {
+                    q: "How would you create a culture of continuous learning in an organization?",
+                    difficulty: "medium",
+                    tips: "Discuss learning platforms, microlearning, peer learning, knowledge sharing sessions, learning time allocation, recognition for learning, leadership role modeling, and making learning accessible."
+                },
+                {
+                    q: "An expensive training program showed poor attendance and engagement. What went wrong and how would you fix it?",
+                    difficulty: "medium",
+                    tips: "Root cause analysis: relevance to job roles, timing issues, communication gaps, manager support, delivery method. Solutions: needs reassessment, better marketing, manager buy-in, flexible formats."
+                }
+            ],
+            "Compensation & Benefits": [
+                {
+                    q: "How would you design a compensation structure for a sales team that balances fixed and variable pay?",
+                    difficulty: "hard",
+                    tips: "Discuss industry benchmarks, role complexity, sales cycle length, team vs. individual targets, commission structures, accelerators, caps, and alignment with business goals. Address motivation and retention."
+                },
+                {
+                    q: "What approach would you take to conduct a salary benchmarking exercise for your organization?",
+                    difficulty: "medium",
+                    tips: "Cover data sources (salary surveys, consulting firms, online platforms), comparable companies selection, job matching methodology, geographic considerations, and how to present findings to leadership."
+                },
+                {
+                    q: "How do you balance internal equity and external competitiveness in compensation decisions?",
+                    difficulty: "medium",
+                    tips: "Explain pay equity analysis, job evaluation methods, salary bands, market positioning strategy, and managing exceptions. Discuss transparency and communication."
+                },
+                {
+                    q: "Design a benefits package for a millennial-heavy workforce in a startup environment.",
+                    difficulty: "medium",
+                    tips: "Focus on flexibility: remote work, wellness programs, learning budgets, mental health support, parental leave, flexible benefits, stock options, and non-traditional perks. Keep cost-effectiveness in mind."
+                },
+                {
+                    q: "How would you handle a situation where a key employee threatens to leave because a competitor offered 40% more salary?",
+                    difficulty: "hard",
+                    tips: "Assess flight risk, market reality check, total rewards comparison, non-monetary factors, retention risk, counter-offer implications, and broader team impact. Show strategic thinking beyond just matching."
+                }
+            ],
+            "Employee Relations": [
+                {
+                    q: "An employee files a harassment complaint against their manager. Walk me through your process.",
+                    difficulty: "hard",
+                    tips: "Show knowledge of POSH Act, immediate actions (ensuring safety, interim measures), investigation process, documentation, confidentiality, timelines, fair hearing principles, and post-investigation actions."
+                },
+                {
+                    q: "How would you handle a conflict between two high-performing team members that's affecting team morale?",
+                    difficulty: "medium",
+                    tips: "Demonstrate mediation skills: individual conversations, understanding root causes, facilitating dialogue, finding common ground, team agreements, and follow-up. Balance productivity with relationship repair."
+                },
+                {
+                    q: "What strategies would you use to improve employee engagement scores that have declined over the past year?",
+                    difficulty: "medium",
+                    tips: "Analyze survey data for themes, prioritize action areas, involve employees in solutions, quick wins vs. long-term changes, manager accountability, communication plan, and measurement of improvement."
+                },
+                {
+                    q: "How do you build trust between HR and employees in an organization where HR is seen as 'management's side'?",
+                    difficulty: "hard",
+                    tips: "Discuss transparency, confidentiality boundaries, employee advocacy within business needs, open-door policy, employee forums, acting on feedback, fair policy implementation, and consistent communication."
+                },
+                {
+                    q: "Design an employee feedback mechanism that goes beyond annual surveys.",
+                    difficulty: "medium",
+                    tips: "Include pulse surveys, stay interviews, exit interviews, town halls, skip-level meetings, suggestion systems, employee councils, real-time feedback tools, and importantly—demonstrating action on feedback."
+                }
+            ],
+            "Compliance & Risk Management": [
+                {
+                    q: "What steps would you take to ensure the organization is compliant with labor laws when expanding to a new state?",
+                    difficulty: "medium",
+                    tips: "Cover Shops & Establishments Act, minimum wages, PF/ESI registration, contract labor regulations, local labor laws, factory licenses if applicable, and working with legal counsel. Show systematic approach."
+                },
+                {
+                    q: "How would you conduct an HR compliance audit?",
+                    difficulty: "hard",
+                    tips: "Discuss audit scope (statutory compliance, policy compliance, documentation), checklist creation, sampling methodology, interviews, document review, gap identification, remediation plan, and periodic reviews."
+                },
+                {
+                    q: "An employee is repeatedly violating company policy despite warnings. How do you handle progressive discipline?",
+                    difficulty: "medium",
+                    tips: "Explain progressive discipline framework: verbal warning, written warning, final warning, termination. Emphasize documentation, consistency, investigation, opportunity to improve, and legal considerations."
+                },
+                {
+                    q: "What HR-related risks should leadership be most concerned about, and how would you mitigate them?",
+                    difficulty: "hard",
+                    tips: "Cover compliance violations, harassment claims, wrongful termination, data privacy breaches, employee misclassification, talent flight, and reputational risks. Link each to mitigation strategies."
+                },
+                {
+                    q: "How do you ensure data privacy and GDPR compliance in HR processes?",
+                    difficulty: "medium",
+                    tips: "Discuss data minimization, consent management, access controls, vendor management, data retention policies, employee rights (access, deletion), breach protocols, and cross-border data transfer regulations."
+                }
+            ],
+            "Generative AI for HR": [
+                {
+                    q: "How could Generative AI transform the recruitment process, and what are the ethical considerations?",
+                    difficulty: "hard",
+                    tips: "Discuss resume screening, job description creation, candidate engagement, interview scheduling, bias in AI, transparency, human oversight, candidate experience, and regulatory concerns around automated decisions."
+                },
+                {
+                    q: "Propose three use cases where you would implement AI in HR operations at your organization.",
+                    difficulty: "medium",
+                    tips: "Consider chatbots for employee queries, automated onboarding content, performance review analysis, learning recommendations, predictive attrition models, or resume screening. Justify with ROI and feasibility."
+                },
+                {
+                    q: "What risks does AI introduce in HR, and how would you manage them?",
+                    difficulty: "hard",
+                    tips: "Cover algorithmic bias, privacy concerns, over-reliance on automation, transparency issues, employee distrust, legal compliance, and data security. Propose governance frameworks and human-in-the-loop approaches."
+                },
+                {
+                    q: "How would you use AI to personalize employee learning and development?",
+                    difficulty: "medium",
+                    tips: "Discuss skill gap analysis through AI, personalized learning paths, content recommendations, adaptive learning platforms, career pathing algorithms, and measuring effectiveness of personalized interventions."
+                },
+                {
+                    q: "An AI tool has rejected several female candidates for a technical role. How do you investigate and address this?",
+                    difficulty: "hard",
+                    tips: "Show understanding of algorithmic bias: audit training data, review decision criteria, test for disparate impact, involve data scientists, implement bias testing, consider alternative tools, and communicate actions taken."
+                }
+            ],
+            "Strategic HR & Talent Management": [
+                {
+                    q: "How do you align HR strategy with overall business strategy?",
+                    difficulty: "hard",
+                    tips: "Discuss understanding business goals, workforce planning, capability building, culture alignment, talent pipeline, organizational design, and HR metrics that demonstrate business impact. Use examples."
+                },
+                {
+                    q: "Walk me through how you would build a succession planning framework for critical roles.",
+                    difficulty: "hard",
+                    tips: "Cover identifying critical positions, defining success profiles, talent review calibration, development planning, succession depth (ready now vs. 1-3 years), emergency succession, and tracking readiness."
+                },
+                {
+                    q: "What is your approach to workforce planning for the next 3 years?",
+                    difficulty: "hard",
+                    tips: "Include demand forecasting (business growth, attrition, new capabilities), supply analysis (current talent, pipeline), gap analysis, build-buy-borrow-bot decisions, and scenario planning."
+                },
+                {
+                    q: "How do you identify and retain high-potential employees?",
+                    difficulty: "medium",
+                    tips: "Discuss HiPo identification criteria (performance + potential), assessment methods, differentiated development, retention strategies, career conversations, and avoiding labeling pitfalls."
+                },
+                {
+                    q: "Design a talent management framework that covers the entire employee lifecycle.",
+                    difficulty: "hard",
+                    tips: "Cover attract (EVP, recruitment), develop (onboarding, L&D, career paths), engage (culture, recognition, work environment), and retain (rewards, growth opportunities, exit management). Show integration."
+                }
+            ],
+            "Teams, Unions & Change Management": [
+                {
+                    q: "How would you handle union negotiations where workers are demanding a 25% wage increase but the company can only afford 10%?",
+                    difficulty: "hard",
+                    tips: "Show negotiation skills: data-driven approach with industry benchmarks, understanding worker concerns, exploring non-wage benefits, phased increases, productivity linkages, building trust, and finding middle ground."
+                },
+                {
+                    q: "Design a change management plan for implementing a new HRMS that will change how employees interact with HR.",
+                    difficulty: "medium",
+                    tips: "Use change models (ADKAR, Kotter's 8 steps): stakeholder analysis, communication plan, training strategy, change champions, addressing resistance, quick wins, and measuring adoption."
+                },
+                {
+                    q: "What strategies would you use to build high-performing teams in a matrix organization?",
+                    difficulty: "medium",
+                    tips: "Address role clarity, dual reporting challenges, conflict resolution mechanisms, collaboration tools, team building, shared goals, communication protocols, and performance management in matrix structures."
+                },
+                {
+                    q: "How do you manage employee resistance to organizational change?",
+                    difficulty: "medium",
+                    tips: "Understand sources of resistance (fear, uncertainty, lack of trust), communication strategies, involvement in change process, addressing WIIFM ('what's in it for me'), quick wins, and celebrating early adopters."
+                },
+                {
+                    q: "A union is threatening to strike over safety concerns. How do you de-escalate the situation?",
+                    difficulty: "hard",
+                    tips: "Show crisis management: immediate safety audit, open dialogue with union representatives, demonstrating commitment to worker safety, transparent communication, interim measures, and third-party mediation if needed."
+                }
+            ],
+            "Globalization & Culture": [
+                {
+                    q: "How would you manage HR for a global team spread across 5 different countries with different labor laws?",
+                    difficulty: "hard",
+                    tips: "Discuss global-local balance, compliance in each jurisdiction, standardized vs. localized policies, cross-border mobility, time zone management, cultural sensitivity, and global HRIS systems."
+                },
+                {
+                    q: "What's your approach to building an inclusive workplace culture in a diverse organization?",
+                    difficulty: "medium",
+                    tips: "Cover D&I strategy, leadership commitment, bias training, inclusive policies, employee resource groups, diverse hiring, psychological safety, celebration of differences, and measuring inclusion."
+                },
+                {
+                    q: "How do you prepare employees for international assignments?",
+                    difficulty: "medium",
+                    tips: "Discuss cultural training, language support, family considerations, compensation adjustments, tax implications, legal compliance, ongoing support during assignment, and repatriation planning."
+                },
+                {
+                    q: "Design an onboarding program for a culturally diverse workforce.",
+                    difficulty: "medium",
+                    tips: "Include cultural sensitivity, buddy programs, inclusive language, multiple communication channels, cultural celebration, addressing unconscious bias, and making all employees feel welcome and valued."
+                },
+                {
+                    q: "How would you handle a situation where cultural differences are causing conflict in a global team?",
+                    difficulty: "hard",
+                    tips: "Show cultural intelligence: understanding different cultural dimensions (Hofstede), facilitating cross-cultural dialogue, setting team norms, mediation with cultural sensitivity, and building cultural competence."
+                }
+            ],
+            "Downsizing & Organizational Politics": [
+                {
+                    q: "You've been asked to reduce headcount by 20% due to budget constraints. How do you approach this responsibly?",
+                    difficulty: "hard",
+                    tips: "Cover criteria for selection (performance, skills, business needs—not discrimination), legal compliance, communication strategy, severance packages, outplacement support, and supporting remaining employees through change."
+                },
+                {
+                    q: "How do you maintain employee morale and productivity among the remaining workforce after a layoff?",
+                    difficulty: "hard",
+                    tips: "Address survivor guilt, transparent communication, workload management, recognition of contributions, rebuilding trust, career development opportunities, and visible leadership presence."
+                },
+                {
+                    q: "What alternatives to layoffs would you explore before recommending workforce reduction?",
+                    difficulty: "medium",
+                    tips: "Consider hiring freeze, voluntary separation schemes, salary cuts, reduced work hours, redeployment, furloughs, and natural attrition. Discuss pros/cons of each."
+                },
+                {
+                    q: "How do you navigate organizational politics while maintaining integrity as an HR professional?",
+                    difficulty: "hard",
+                    tips: "Show political savvy while staying ethical: understanding power dynamics, building alliances, data-driven advocacy, choosing battles wisely, and never compromising on fairness or policy."
+                },
+                {
+                    q: "A senior leader is pushing you to overlook policy violations by their favorite employee. How do you handle this?",
+                    difficulty: "hard",
+                    tips: "Demonstrate courage and professionalism: explain policy rationale, consequences of inconsistency, organizational risk, alternative solutions if any, escalation if needed, and maintaining objective stance."
+                }
+            ],
+            "HR Analytics & Technology": [
+                {
+                    q: "What HR metrics would you present in a quarterly business review to demonstrate HR's strategic impact?",
+                    difficulty: "medium",
+                    tips: "Include leading indicators (pipeline strength, time-to-hire) and lagging indicators (turnover, engagement, cost-per-hire). Link to business outcomes like revenue per employee, productivity metrics, and talent density."
+                },
+                {
+                    q: "How would you use people analytics to predict employee attrition?",
+                    difficulty: "hard",
+                    tips: "Discuss data sources, key variables (tenure, engagement, promotion history, manager quality), predictive modeling techniques, ethical considerations, and translating insights into retention interventions."
+                },
+                {
+                    q: "What would you consider when selecting an HRMS for a mid-sized company?",
+                    difficulty: "medium",
+                    tips: "Cover functionality needs, integration with existing systems, scalability, user experience, vendor stability, implementation timeline, cost (TCO), data security, and compliance requirements."
+                },
+                {
+                    q: "How do you ensure data-driven decision making in HR while maintaining employee privacy?",
+                    difficulty: "medium",
+                    tips: "Discuss anonymization techniques, aggregate reporting, access controls, consent management, transparency about data usage, and balancing insights with individual privacy rights."
+                },
+                {
+                    q: "Design a dashboard for the CEO that shows the health of the organization's talent.",
+                    difficulty: "hard",
+                    tips: "Include talent acquisition health, engagement levels, turnover (overall and regrettable), leadership pipeline strength, skill gaps, diversity metrics, and productivity indicators. Make it actionable."
+                }
+            ],
+            "Employee Wellness & Experience": [
+                {
+                    q: "How would you design a comprehensive employee wellness program?",
+                    difficulty: "medium",
+                    tips: "Cover physical wellness (gym, health screenings), mental health (EAP, counseling), financial wellness (planning workshops), work-life balance, and creating a supportive culture. Include measurement."
+                },
+                {
+                    q: "What's your strategy for addressing burnout in a high-pressure environment?",
+                    difficulty: "hard",
+                    tips: "Identify root causes (workload, lack of control, unclear expectations), manager training, workload audits, flexible work, recognition programs, mental health support, and organizational changes if needed."
+                },
+                {
+                    q: "How do you improve the employee experience beyond just engagement surveys?",
+                    difficulty: "medium",
+                    tips: "Map employee journey touchpoints, identify pain points, gather continuous feedback, design thinking approach, empowering managers, technology to reduce friction, and measure experience at key moments."
+                },
+                {
+                    q: "Design a mental health support system for employees that reduces stigma.",
+                    difficulty: "medium",
+                    tips: "Include EAP with easy access, mental health days, manager training to recognize signs, awareness campaigns, leadership sharing experiences, peer support groups, and ensuring confidentiality."
+                },
+                {
+                    q: "How would you support employees through a major crisis (like a pandemic)?",
+                    difficulty: "hard",
+                    tips: "Show empathy and pragmatism: frequent communication, flexible policies, mental health support, technology enablement, manager toolkit, checking in on vulnerable populations, and adapting quickly."
+                }
+            ]
+        };
+
+        let currentMode = 'browse';
+        let currentTopicIndex = null;
+        let currentQuestionIndex = 0;
+        let viewedQuestions = new Set();
+
+        function initializeApp() {
+            renderTopics();
+            updateStats();
+        }
+
+        function renderTopics() {
+            const grid = document.getElementById('topicGrid');
+            grid.innerHTML = '';
+            Object.keys(questions).forEach((topic, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'topic-btn';
+                btn.innerHTML = `<strong>${topic}</strong><br><small>${questions[topic].length} questions</small>`;
+                btn.onclick = () => selectTopic(index);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectTopic(index) {
+            currentTopicIndex = index;
+            currentQuestionIndex = 0;
+            
+            document.querySelectorAll('.topic-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            
+            displayQuestion();
+            updateStats();
+        }
+
+        function displayQuestion() {
+            const topic = Object.keys(questions)[currentTopicIndex];
+            const questionList = questions[topic];
+            const question = questionList[currentQuestionIndex];
+            
+            const questionArea = currentMode === 'browse' ? 
+                document.getElementById('questionArea') : 
+                document.getElementById('randomQuestionArea');
+            
+            viewedQuestions.add(`${topic}-${currentQuestionIndex}`);
+            
+            questionArea.innerHTML = `
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="question-number">Question ${currentQuestionIndex + 1}/${questionList.length}</span>
+                        <span class="difficulty ${question.difficulty}">${question.difficulty.toUpperCase()}</span>
+                    </div>
+                    <div class="question-text">${question.q}</div>
+                    <div class="tips">
+                        <div class="tips-header">💡 Interview Tips & What to Cover:</div>
+                        <div class="tips-content">${question.tips}</div>
+                    </div>
+                </div>
+                <div class="controls">
+                    ${currentQuestionIndex > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">← Previous</button>' : ''}
+                    ${currentQuestionIndex < questionList.length - 1 ? '<button class="btn btn-primary" onclick="nextQuestion()">Next →</button>' : ''}
+                    ${currentMode === 'random' ? '<button class="btn btn-primary" onclick="randomQuestion()">🎲 Random Question</button>' : ''}
+                </div>
+            `;
+            
+            updateStats();
+        }
+
+        function nextQuestion() {
+            const topic = Object.keys(questions)[currentTopicIndex];
+            const questionList = questions[topic];
+            if (currentQuestionIndex < questionList.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function randomQuestion() {
+            const topics = Object.keys(questions);
+            const randomTopicIndex = Math.floor(Math.random() * topics.length);
+            const topic = topics[randomTopicIndex];
+            const randomQuestionIndex = Math.floor(Math.random() * questions[topic].length);
+            
+            currentTopicIndex = randomTopicIndex;
+            currentQuestionIndex = randomQuestionIndex;
+            displayQuestion();
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (mode === 'browse') {
+                document.getElementById('browseMode').classList.remove('hidden');
+                document.getElementById('randomMode').classList.add('hidden');
+            } else {
+                document.getElementById('browseMode').classList.add('hidden');
+                document.getElementById('randomMode').classList.remove('hidden');
+                randomQuestion();
+            }
+        }
+
+        function updateStats() {
+            const totalCount = Object.values(questions).reduce((sum, q) => sum + q.length, 0);
+            document.getElementById('totalQuestions').textContent = totalCount;
+            document.getElementById('questionsViewed').textContent = viewedQuestions.size;
+            
+            if (currentTopicIndex !== null) {
+                const topic = Object.keys(questions)[currentTopicIndex];
+                document.getElementById('currentTopic').textContent = topic.split(' ')[0] + '...';
+            }
+        }
+
+        initializeApp();
+    </script>
+</body>
+</html>
